@@ -1,0 +1,19 @@
+{
+  "comment": "North Carolina pilot AOIs. Imagery is exported from the NC OneMap Orthoimagery image service at 0.30 m to match SpaceNet/LoveDA. Footprints come from the NC statewide (NCEM) county files. Raleigh/Durham are the in-region train/val areas; Charlotte is a held-out city for cross-city evaluation. NOTE: footprint vintages (Wake/Durham 2021, Mecklenburg 2023) may be older than the newest imagery -- run the overlay QA in check_data.py before trusting a chip.",
+  "gsd_m": 0.30,
+  "aoi_size_m": 1200,
+  "counties": {
+    "Wake": "https://sdd.nc.gov/downloads/public/BuildingFootprintsbyCounty/Current/Wake_2021_Buildings.zip",
+    "Durham": "https://sdd.nc.gov/downloads/public/BuildingFootprintsbyCounty/Current/Durham_2021_Buildings.zip",
+    "Mecklenburg": "https://sdd.nc.gov/downloads/public/BuildingFootprintsbyCounty/Current/Mecklenburg_2023_Buildings.zip"
+  },
+  "aois": [
+    {"name": "raleigh_downtown", "city": "Raleigh", "county": "Wake", "split_role": "train", "center_lon": -78.6382, "center_lat": 35.7796},
+    {"name": "raleigh_north", "city": "Raleigh", "county": "Wake", "split_role": "train", "center_lon": -78.6200, "center_lat": 35.8300},
+    {"name": "durham_downtown", "city": "Durham", "county": "Durham", "split_role": "val", "center_lon": -78.8986, "center_lat": 36.0025},
+    {"name": "charlotte_uptown", "city": "Charlotte", "county": "Mecklenburg", "split_role": "test", "center_lon": -80.8431, "center_lat": 35.2271},
+    {"name": "charlotte_southend", "city": "Charlotte", "county": "Mecklenburg", "split_role": "test", "center_lon": -80.8550, "center_lat": 35.2000}
+  ],
+  "imagery_service": "https://services.nconemap.gov/secure/rest/services/Imagery/Orthoimagery_Latest/ImageServer",
+  "imagery_service_note": "Orthoimagery_Latest = most recent flight per location, statewide. The single-cycle service Orthoimagery_20242027 covers only the eastern flight block -- Charlotte exports from it are blank (verified 2026-11-02), so do not use it for western NC. Because 'Latest' mosaics different flight years, always check the tile's overlay QA against the footprint vintage."
+}

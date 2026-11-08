@@ -1,0 +1,17 @@
+# Data is downloaded, not versioned (see README: Getting Started).
+# Only code, configs, split files and result summaries belong in git.
+data/
+*.tif
+*.tiff
+*.zip
+*.tar.gz
+*.part
+__pycache__/
+*.pth
+checkpoints/
+wandb/
+.DS_Store
+
+# ...but keep the small, reproducibility-critical artifacts:
+!data/processed/*/split.csv
+!data/processed/*/stats.json
